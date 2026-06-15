@@ -56,12 +56,20 @@
 
             <!--  CheckBox - kontrolka do zaznaczania jednej lub wielu opcji  -->
             <!--  IsThreeState - czy ma trzy stany: zaznaczony, niezaznaczony, nieokreślony  -->
-            <CheckBox Content="Opcja 1" />
-            <CheckBox Content="Opcja 2"
-                      IsEnabled="False" />
-            <CheckBox Content="Opcja 3"
+            <CheckBox x:Name="cb1"
+                      Click="CheckBox_Click"
+                      Content="Opcja 1" />
+            <CheckBox x:Name="cb2"
+                      Click="CheckBox_Click"
+                      Content="Opcja 2"
+                      IsEnabled="true" />
+            <CheckBox x:Name="cb3"
+                      Click="CheckBox_Click"
+                      Content="Opcja 3"
                       IsChecked="True" />
-            <CheckBox Content="Wszystkie"
+            <CheckBox x:Name="cbAll"
+                      Click="CheckBoxAll_Click"
+                      Content="Wszystkie"
                       IsThreeState="True" />
 
 
@@ -85,12 +93,12 @@
                 </StackPanel>
             </RadioButton>
 
-            <Button>
+            <Button Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
                     <Label VerticalContentAlignment="Center">Coś</Label>
                     <Image Width="32"
                            Height="32"
-                           Source="Images/question_mark.jpg" >
+                           Source="Images/question_mark.jpg">
                         <Image.LayoutTransform>
                             <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}" />
                         </Image.LayoutTransform>
@@ -107,21 +115,23 @@
             <!--  TickFrequency - odstęp między wartościami  -->
             <!--  TickPlacement - położenie znaczników  -->
             <Slider x:Name="MySlider"
+                    AutoToolTipPlacement="TopLeft"
                     Foreground="Black"
                     IsSnapToTickEnabled="True"
                     Maximum="100"
                     Minimum="25"
                     TickFrequency="5"
                     TickPlacement="Both"
-                    Value="50"
-                    AutoToolTipPlacement="TopLeft"/>
-            
+                    Value="50" />
+
             <!--  ProgressBar - kontrolka do wyświetlania postępu  -->
             <!--  Maximum - maksymalna wartość  -->
             <!--  Value - wartość  -->
             <!--  IsIndeterminate - czy ma być wyświetlany pasek postępu nieokreślony  -->
-            <ProgressBar Height="32" Value="{Binding ElementName=MySlider, Path=Value}"/>
-            <ProgressBar Height="32" IsIndeterminate="True"/>
+            <ProgressBar Height="32"
+                         Value="{Binding ElementName=MySlider, Path=Value}" />
+            <ProgressBar Height="32"
+                         IsIndeterminate="True" />
 
         </StackPanel>
     </ScrollViewer>
