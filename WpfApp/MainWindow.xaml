@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
-    </Grid>
+    <!--<Button Background="Blue" Content="Click me!" Foreground="White" />-->
+    <!--<Button Background="Green" >
+        <Button.Content>Click me!</Button.Content>
+        <Button.Foreground>White</Button.Foreground>
+    </Button>-->
+    
+    <!-- kontrolki i layouty mają właściwości "domyślne", do których nazw nie musimy się odwoływać przy zagnieżdzaniu -->    
+    <!--<Window.Content>-->
+        <Button Background="Blue" Foreground="White" > Hello! </Button>
+    <!--</Window.Content>-->
 </Window>
