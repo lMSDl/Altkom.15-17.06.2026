@@ -142,8 +142,23 @@
             <Button>UniformGridButton 7</Button>
             <Button>UniformGridButton 8</Button>
             <Button>UniformGridButton 9</Button>
-            <Button>UniformGridButton 10</Button>
+            <Button Content="UniformGridButton 10">
+                <!--  ToolTip - tekst wyświetlany po najechaniu kursorem na kontrolkę  -->
+                <!--<Button.ToolTip>ala ma kota</Button.ToolTip>-->
+                <Button.ToolTip>
+                    <Viewbox Width="500"
+                             Height="500">
+                        <Button>UniformGridButton 10</Button>
+                    </Viewbox>
+                </Button.ToolTip>
+
+            </Button>
         </UniformGrid>
+        
+        <!--  Viewbox - layout pozwalający na skalowanie zawartości wewnątrz  -->
+        <Viewbox>
+            <Button>ViewboxButton</Button>
+        </Viewbox>
 
     </DockPanel>
 
