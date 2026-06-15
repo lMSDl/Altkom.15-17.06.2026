@@ -2,55 +2,93 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
 
     <!--<Button Background="Blue" Content="Click me!" Foreground="White" />-->
     <!--<Button Background="Green" >
         <Button.Content>Click me!</Button.Content>
         <Button.Foreground>White</Button.Foreground>
     </Button>-->
-    
-    <!-- kontrolki i layouty mają właściwości "domyślne", do których nazw nie musimy się odwoływać przy zagnieżdzaniu -->    
+
+    <!--  kontrolki i layouty mają właściwości "domyślne", do których nazw nie musimy się odwoływać przy zagnieżdzaniu  -->
     <!--<Window.Content>-->
-        <!--<Button Background="Blue" Foreground="White" > Hello! </Button>-->
+    <!--<Button Background="Blue" Foreground="White" > Hello! </Button>-->
     <!--</Window.Content>-->
 
 
-    <!--  Grid pozwalający na podział widoku na kolumny i wiersze  -->
-    <!-- RowDefinition posiada nowy sposób zapisu bez <RowDefinitions> -->
-    <Grid RowDefinitions="2*,auto,*,230">
-        <!--  1 kolumna o szerokości 150, 2 kolumna o szerokości 1*, 3 kolumna o szerokości auto, 4 kolumna o szerokości 3*  -->
-        <Grid.ColumnDefinitions>
-            <!--  150 oznacza, że szerokość kolumny wynosi 150 pikseli  -->
-            <ColumnDefinition Width="150"/>
-            <!--  * oznacza, że szerokość kolumny jest proporcjonalna pozostałego wolnego miejsca w widoku  -->
-            <ColumnDefinition Width="*"/>
-            <!--  auto oznacza, że szerokość kolumny jest równa szerokości zawartości  -->
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
+    <!--  DockPanel - layout pozwalający na dokowanie elementów do jednej z krawędzi  -->
+    <!--  ostatni element w DockPanel zajmuje całą resztę wolnego miejsca  -->
+    <DockPanel>
 
-        <!--  HorizontalContentAlignment - poziome wyjustowanie wewnątrz kontrolki  -->
-        <Button Background="Aqua"
-                HorizontalContentAlignment="Right">Button 1</Button>
-        <!--  HorizontalAlignment - poziome wyjustowanie kontrolki wewnątrz jej kontenera  -->
-        <Button Grid.Column="0" HorizontalAlignment="Left" VerticalContentAlignment="Top" Width="50">Button 2</Button>
+        <!--  kolejność elementów w DockPanel ma znaczenie, ponieważ są one dokowane do krawędzi w kolejności ich deklaracji  -->
+        <Button DockPanel.Dock="Bottom">DockButton 1</Button>
+        <Button DockPanel.Dock="Top">DockButton 2</Button>
+        <Button DockPanel.Dock="Left">DockButton 3</Button>
+        <Button DockPanel.Dock="Right">DockButton 4</Button>
+        <Button DockPanel.Dock="Bottom">DockButton 5</Button>
 
 
-        <!--  Grid.Row / Grid.Column - określa w którym wierszu i kolumnie znajduje się kontrolka  -->
-        <Button Grid.Column="1" >Button 3</Button>
-        <Button Grid.Column="3" >Button 5</Button>
-        
-        <Button Grid.Column="2" >Button 4</Button>
+        <!--  Grid pozwalający na podział widoku na kolumny i wiersze  -->
+        <!-- RowDefinition posiada nowy sposób zapisu bez <RowDefinitions> -->
+        <Grid RowDefinitions="2*,auto,*,230">
+            <!--  1 kolumna o szerokości 150, 2 kolumna o szerokości 1*, 3 kolumna o szerokości auto, 4 kolumna o szerokości 3*  -->
+            <Grid.ColumnDefinitions>
+                <!--  150 oznacza, że szerokość kolumny wynosi 150 pikseli  -->
+                <ColumnDefinition Width="150" />
+                <!--  * oznacza, że szerokość kolumny jest proporcjonalna pozostałego wolnego miejsca w widoku  -->
+                <ColumnDefinition Width="*" />
+                <!--  auto oznacza, że szerokość kolumny jest równa szerokości zawartości  -->
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
 
-        <!--  Grid.RowSpan / Grid.ColumnSpan - określa ile wierszy zajmuje kontrolka  -->
-        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >Button 6</Button>
-        <!-- Jeśli elementy na siebie nachodzą, to w przypadku grid kolejność implementacji odpowiada kolejności wyświetlania, czyli elementy zdefiniowane później są wyświetlane na wierzchu -->
-        <Button Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" >Button 8</Button>
-        <Button Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" >Button 7</Button>
-    </Grid>
-    
+            <!--  HorizontalContentAlignment - poziome wyjustowanie wewnątrz kontrolki  -->
+            <Button HorizontalContentAlignment="Right"
+                    Background="Aqua">
+                Button 1
+            </Button>
+            <!--  HorizontalAlignment - poziome wyjustowanie kontrolki wewnątrz jej kontenera  -->
+            <Button Grid.Column="0"
+                    Width="50"
+                    HorizontalAlignment="Left"
+                    VerticalContentAlignment="Top">
+                Button 2
+            </Button>
+
+
+            <!--  Grid.Row / Grid.Column - określa w którym wierszu i kolumnie znajduje się kontrolka  -->
+            <Button Grid.Column="1">Button 3</Button>
+            <Button Grid.Column="3">Button 5</Button>
+
+            <Button Grid.Column="2">Button 4</Button>
+
+            <!--  Grid.RowSpan / Grid.ColumnSpan - określa ile wierszy zajmuje kontrolka  -->
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                Button 6
+            </Button>
+            <!--  Jeśli elementy na siebie nachodzą, to w przypadku grid kolejność implementacji odpowiada kolejności wyświetlania, czyli elementy zdefiniowane później są wyświetlane na wierzchu  -->
+            <Button Grid.Row="2"
+                    Grid.RowSpan="2"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2">
+                Button 8
+            </Button>
+            <Button Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Grid.Column="2">
+                Button 7
+            </Button>
+        </Grid>
+
+
+
+    </DockPanel>
+
 </Window>
