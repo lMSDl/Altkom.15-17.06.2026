@@ -87,16 +87,20 @@
             </Button>
         </Grid>
 
-        <!--  StackPanel - layout pozwalający na ustawienie elementów jeden pod drugim (domyślnie: Orientation="Vertical")  -->
-        <!--  Orientation - określa kierunek ułożenia elementów w StackPanel  -->
-        <StackPanel HorizontalAlignment="Right"
-                    Orientation="Horizontal">
-            <Button>StackButton 1</Button>
-            <Button>StackButton 2</Button>
-            <Button FontSize="20">StackButton 3</Button>
-            <Button>StackButton 4</Button>
-            <Button>StackButton 5</Button>
-        </StackPanel>
+        <!--  ScrollViewer - layout pozwalający na dodanie paska przewijania do zawartości  -->
+        <!--  VerticalScrollBarVisibility - określa widoczność paska przewijania w pionie. Auto - pasek przewijania jest widoczny tylko wtedy, gdy zawartość jest większa niż obszar widoczny  -->
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <!--  StackPanel - layout pozwalający na ustawienie elementów jeden pod drugim (domyślnie: Orientation="Vertical")  -->
+            <!--  Orientation - określa kierunek ułożenia elementów w StackPanel  -->
+            <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <Button>StackButton 1</Button>
+                <Button>StackButton 2</Button>
+                <Button FontSize="20">StackButton 3</Button>
+                <Button>StackButton 4</Button>
+                <Button>StackButton 5</Button>
+            </StackPanel>
+        </ScrollViewer>
 
         <!--  WrapPanel - layout pozwalający na ustawienie elementów jeden obok drugiego (domyślnie: Orientation="Horizontal")  -->
         <!--  elementy, które nie mieszczą się w jednej linii, są przesuwane do kolejnej linii  -->
@@ -154,7 +158,7 @@
 
             </Button>
         </UniformGrid>
-        
+
         <!--  Viewbox - layout pozwalający na skalowanie zawartości wewnątrz  -->
         <Viewbox>
             <Button>ViewboxButton</Button>
