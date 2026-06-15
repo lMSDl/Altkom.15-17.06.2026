@@ -109,6 +109,24 @@
             <Button>WrapButton 5</Button>
         </WrapPanel>
 
+        <!--  Canvas - layout pozwalający na ustawienie elementów w dowolnym miejscu  -->
+        <!--  Canvas może umieszczać elementy poza swoimi granicami  -->
+        <Canvas Width="50"
+                Height="50"
+                Background="Beige">
+            <Button>CanvasButton 1</Button>
+            <!--  Canvas.Left / Canvas.Top - określa odległość od lewej / górnej krawędzi  -->
+            <Button Canvas.Left="-350"
+                    Canvas.Top="50">
+                CanvasButton 2
+            </Button>
+            <!--  Canvas.Right / Canvas.Bottom - określa odległość od prawej / dolnej krawędzi  -->
+            <Button Canvas.Right="150"
+                    Canvas.Bottom="-150">
+                CanvasButton 2
+            </Button>
+        </Canvas>
+
     </DockPanel>
 
 </Window>
