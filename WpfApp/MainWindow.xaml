@@ -127,6 +127,24 @@
             </Button>
         </Canvas>
 
+        <!--  UniformGrid - layout pozwalający na ustawienie elementów w równych odstępach w formie siatki  -->
+        <!--  Columns - określa liczbę kolumn w siatce  -->
+        <!--  Rows - określa liczbę wierszy w siatce (wartość 0 oznacza automatyczną ilość)  -->
+        <!--  Jeśli elementów jest więcej niż określona liczba wierszy, to mogą być one nie wyświetlone  -->
+        <UniformGrid Columns="4"
+                     Rows="0">
+            <Button>UniformGridButton 1</Button>
+            <Button>UniformGridButton 2</Button>
+            <Button>UniformGridButton 3</Button>
+            <Button>UniformGridButton 4</Button>
+            <Button>UniformGridButton 5</Button>
+            <Button>UniformGridButton 6</Button>
+            <Button>UniformGridButton 7</Button>
+            <Button>UniformGridButton 8</Button>
+            <Button>UniformGridButton 9</Button>
+            <Button>UniformGridButton 10</Button>
+        </UniformGrid>
+
     </DockPanel>
 
 </Window>
