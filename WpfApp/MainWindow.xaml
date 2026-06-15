@@ -106,11 +106,15 @@
         <!--  elementy, które nie mieszczą się w jednej linii, są przesuwane do kolejnej linii  -->
         <!--  Orientation - określa kierunek ułożenia elementów w WrapPanel  -->
         <WrapPanel Orientation="Vertical">
-            <Button>WrapButton 1</Button>
-            <Button>WrapButton 2</Button>
+            <!--  Padding - określa odstęp wewnętrzny od krawędzi kontrolki do zawartości  -->
+            <Button Padding="15,10">WrapButton 1</Button>
+            <!--  Margin - określa odstęp zewnętrzny od krawędzi kontrolki  -->
+            <!--  wartość jedna oznacza odstęp od wszystkich krawędzi, wartość dwóch oznacza odstęp od krawędzi poziomych i pionowych  -->
+            <Button Margin="10">WrapButton 2</Button>
             <Button FontSize="20">WrapButton 3</Button>
-            <Button>WrapButton 4</Button>
-            <Button>WrapButton 5</Button>
+            <Button Margin="5,10">WrapButton 4</Button>
+            <Button Margin="5,10,15,20">WrapButton 5</Button>
+            <Button>WrapButton 6</Button>
         </WrapPanel>
 
         <!--  Canvas - layout pozwalający na ustawienie elementów w dowolnym miejscu  -->
