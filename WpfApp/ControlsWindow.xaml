@@ -90,7 +90,11 @@
                     <Label VerticalContentAlignment="Center">Coś</Label>
                     <Image Width="32"
                            Height="32"
-                           Source="Images/question_mark.jpg" />
+                           Source="Images/question_mark.jpg" >
+                        <Image.LayoutTransform>
+                            <RotateTransform Angle="{Binding ElementName=MySlider, Path=Value}" />
+                        </Image.LayoutTransform>
+                    </Image>
                 </StackPanel>
             </Button>
 
@@ -102,7 +106,8 @@
             <!--  Minimum - minimalna wartość  -->
             <!--  TickFrequency - odstęp między wartościami  -->
             <!--  TickPlacement - położenie znaczników  -->
-            <Slider Foreground="Black"
+            <Slider x:Name="MySlider"
+                    Foreground="Black"
                     IsSnapToTickEnabled="True"
                     Maximum="100"
                     Minimum="25"
@@ -115,7 +120,7 @@
             <!--  Maximum - maksymalna wartość  -->
             <!--  Value - wartość  -->
             <!--  IsIndeterminate - czy ma być wyświetlany pasek postępu nieokreślony  -->
-            <ProgressBar Height="32" Value="44"/>
+            <ProgressBar Height="32" Value="{Binding ElementName=MySlider, Path=Value}"/>
             <ProgressBar Height="32" IsIndeterminate="True"/>
 
         </StackPanel>
