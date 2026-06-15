@@ -89,13 +89,25 @@
 
         <!--  StackPanel - layout pozwalający na ustawienie elementów jeden pod drugim (domyślnie: Orientation="Vertical")  -->
         <!--  Orientation - określa kierunek ułożenia elementów w StackPanel  -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal">
             <Button>StackButton 1</Button>
             <Button>StackButton 2</Button>
             <Button FontSize="20">StackButton 3</Button>
             <Button>StackButton 4</Button>
             <Button>StackButton 5</Button>
         </StackPanel>
+
+        <!--  WrapPanel - layout pozwalający na ustawienie elementów jeden obok drugiego (domyślnie: Orientation="Horizontal")  -->
+        <!--  elementy, które nie mieszczą się w jednej linii, są przesuwane do kolejnej linii  -->
+        <!--  Orientation - określa kierunek ułożenia elementów w WrapPanel  -->
+        <WrapPanel Orientation="Vertical">
+            <Button>WrapButton 1</Button>
+            <Button>WrapButton 2</Button>
+            <Button FontSize="20">WrapButton 3</Button>
+            <Button>WrapButton 4</Button>
+            <Button>WrapButton 5</Button>
+        </WrapPanel>
 
     </DockPanel>
 
