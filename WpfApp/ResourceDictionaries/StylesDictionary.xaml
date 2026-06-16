@@ -11,14 +11,14 @@
     <!--  x:Key - klucz, pod którym styl będzie dostępny, jeśli nie ma klucza to styl automatycznie zastosowany będzie do TargetType  -->
     <!--  BasedOn - pozwala na dziedziczenie stylu z innego stylu  -->
     <Style x:Key="RedBoldStyle"
-       BasedOn="{StaticResource RedItalicStyle}"
-       TargetType="Label">
+           BasedOn="{StaticResource RedItalicStyle}"
+           TargetType="Label">
         <!--  Setter - ustawia właściwość kontrolki na określoną wartość  -->
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
 
     <Style x:Key="RedRectangleStyle"
-       TargetType="Rectangle">
+           TargetType="Rectangle">
         <Setter Property="Fill" Value="Red" />
         <Setter Property="Width" Value="10" />
         <Setter Property="Height" Value="10" />
