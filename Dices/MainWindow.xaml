@@ -21,6 +21,7 @@
                 DockPanel.Dock="Right"
                 FontSize="32" />
         <Button Click="Button_Roll"
+                x:Name="RollButton"
                 Content="{x:Static properties:Resources.Roll}"
                 DockPanel.Dock="Bottom"
                 FontSize="32" />

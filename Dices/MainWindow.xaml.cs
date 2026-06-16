@@ -1,18 +1,7 @@
 ﻿using Dices.Models;
-using System.Collections;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Dices
 {
@@ -42,18 +31,36 @@ namespace Dices
             Dices.Add(new Dice { Value = random.Next(1, 7) });
         }
 
-        private void Button_Roll(object sender, RoutedEventArgs e)
+        private /*async*/ void Button_Roll(object sender, RoutedEventArgs e)
         {
+            RollButton.IsEnabled = false;
             var random = new Random(DateTime.Now.Millisecond);
-            foreach (var dice in Dices.Where(x => !x.IsLocked))
+
+            //niezalecane podejście fire-and-forget, bo może prowadzić do nieoczekiwanych błędów, jeśli np. użytkownik uruchomi kolejne rzuty zanim poprzednie się zakończą
+            /*foreach (var dice in Dices.Where(x => !x.IsLocked))
+            {
+                _ = RollAsync(random, dice);
+            }*/
+
+            var rollTasks = Dices.Where(x => !x.IsLocked).Select(x => RollAsync(random, x));
+            /*await Task.WhenAll(rollTasks);
+            RollButton.IsEnabled = true;*/
+            
+            Task.WhenAll(rollTasks).ContinueWith(_ => Dispatcher.Invoke(() => RollButton.IsEnabled = true));
+        }
+
+        private static async Task RollAsync(Random random, Dice dice)
+        {
+            for (var i = 0; i < random.Next(25, 75); i++)
             {
                 dice.Value = random.Next(1, 7);
+                await Task.Delay(25);
             }
         }
 
         private void Dice_Click(object sender, RoutedEventArgs e)
         {
-            if(sender is Button button && button.DataContext is Dice dice)
+            if (sender is Button button && button.DataContext is Dice dice)
             {
                 dice.IsLocked = !dice.IsLocked;
             }
