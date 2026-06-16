@@ -1,0 +1,42 @@
+﻿<Window x:Class="OrdersApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:OrdersApp"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <Grid ColumnDefinitions="*,*">
+
+        <ListBox Grid.Column="0"
+                 ItemsSource="{Binding Orders}"
+                 SelectedItem="{Binding SelectedOrder}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding DateTime}" />
+                        <TextBlock Text="{Binding CustomerName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+        <ListView Grid.Column="1"
+                  ItemsSource="{Binding SelectedOrder.Products}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                    Header="Name" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Price}"
+                                    Header="Price" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Quantity}"
+                                    Header="Quantity" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
