@@ -21,8 +21,10 @@ namespace WpfApp
     /// </summary>
     public partial class ContentControlWindow : Window
     {
+        public Product SelectedProduct { get => selectedProduct; set => selectedProduct = value; }
         public IEnumerable<Product> Products { get; set; }
         private IService<Product> _service;
+        private Product selectedProduct;
 
         public ContentControlWindow()
         {
