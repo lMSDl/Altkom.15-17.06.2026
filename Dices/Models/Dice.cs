@@ -1,7 +1,23 @@
-﻿namespace Dices.Models
+﻿using System.ComponentModel;
+
+namespace Dices.Models
 {
-    public class Dice
+    public class Dice : INotifyPropertyChanged
     {
-        public int Value { get; set; }
+        private int _value;
+        public int Value
+        {
+            get => _value;
+            set
+            {
+                if (_value != value)
+                {
+                    _value = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
