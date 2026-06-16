@@ -20,12 +20,13 @@
                 Content="+"
                 DockPanel.Dock="Right"
                 FontSize="32" />
-        <Button Content="{x:Static properties:Resources.Roll}"
+        <Button Click="Button_Roll"
+                Content="{x:Static properties:Resources.Roll}"
                 DockPanel.Dock="Bottom"
-                Click="Button_Roll"
                 FontSize="32" />
 
-        <ItemsControl ItemsSource="{Binding Dices}" Padding="5">
+        <ItemsControl Padding="5"
+                      ItemsSource="{Binding Dices}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid />
@@ -34,39 +35,52 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image >
-                        <Image.Style>
-                            <Style TargetType="Image">
-                                <Setter Property="Source" Value="/Images/kostkapusta.png" />
-                                <!--  StyleTriggers kolekcja wyzwalaczy  -->
-                                <Style.Triggers>
-                                    <!--  DataTrigger - wyzwalacz danych, który zmienia właściwość w zależności od wartości powiązanej właściwości  -->
-                                    <!--  Binding - powiązanie do właściwości Value w klasie Dice  -->
-                                    <!--  Value - wartość, która wyzwala zmianę  -->
-                                    <!--  Setter - ustawia wartość właściwości Source na odpowiedni obrazek  -->
-                                    <DataTrigger Binding="{Binding Value}" Value="1">
-                                        <Setter Property="Source" Value="/Images/kostka1.png" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Value}" Value="2">
-                                        <Setter Property="Source" Value="/Images/kostka2.png" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Value}" Value="3">
-                                        <Setter Property="Source" Value="/Images/kostka3.png" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Value}" Value="4">
-                                        <Setter Property="Source" Value="/Images/kostka4.png" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Value}" Value="5">
-                                        <Setter Property="Source" Value="/Images/kostka5.png" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Value}" Value="6">
-                                        <Setter Property="Source" Value="/Images/kostka6.png" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Image.Style>
+                    <Button Background="Transparent"
+                            Click="Dice_Click">
+                        <Image>
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Source" Value="/Images/kostkapusta.png" />
+                                    <!--  StyleTriggers kolekcja wyzwalaczy  -->
+                                    <Style.Triggers>
+                                        <!--  DataTrigger - wyzwalacz danych, który zmienia właściwość w zależności od wartości powiązanej właściwości  -->
+                                        <!--  Binding - powiązanie do właściwości Value w klasie Dice  -->
+                                        <!--  Value - wartość, która wyzwala zmianę  -->
+                                        <!--  Setter - ustawia wartość właściwości Source na odpowiedni obrazek  -->
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="1">
+                                            <Setter Property="Source" Value="/Images/kostka1.png" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="2">
+                                            <Setter Property="Source" Value="/Images/kostka2.png" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="3">
+                                            <Setter Property="Source" Value="/Images/kostka3.png" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="4">
+                                            <Setter Property="Source" Value="/Images/kostka4.png" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="5">
+                                            <Setter Property="Source" Value="/Images/kostka5.png" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="6">
+                                            <Setter Property="Source" Value="/Images/kostka6.png" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsLocked}"
+                                                     Value="True">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
 
-                    </Image>
+                        </Image>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

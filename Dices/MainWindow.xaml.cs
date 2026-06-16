@@ -45,9 +45,17 @@ namespace Dices
         private void Button_Roll(object sender, RoutedEventArgs e)
         {
             var random = new Random(DateTime.Now.Millisecond);
-            foreach (var dice in Dices)
+            foreach (var dice in Dices.Where(x => !x.IsLocked))
             {
                 dice.Value = random.Next(1, 7);
+            }
+        }
+
+        private void Dice_Click(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button button && button.DataContext is Dice dice)
+            {
+                dice.IsLocked = !dice.IsLocked;
             }
         }
     }

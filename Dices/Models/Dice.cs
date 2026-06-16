@@ -18,6 +18,23 @@ namespace Dices.Models
             }
         }
 
+        private bool _isLocked;
+        public bool IsLocked
+        {
+            get => _isLocked;
+            set
+            {
+                if (_isLocked != value)
+                {
+                    _isLocked = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsLocked)));
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
+
+
     }
+
 }
