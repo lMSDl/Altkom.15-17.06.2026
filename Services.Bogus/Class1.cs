@@ -14,7 +14,7 @@ namespace Services.Bogus
 
         }
 
-        public IEnumerable<T> ReadALl()
+        public IEnumerable<T> ReadAll()
         {
             return[.. Entities];
         }

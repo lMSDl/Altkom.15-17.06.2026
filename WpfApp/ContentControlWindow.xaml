@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:Models;assembly=Models"
         Title="ContentControlWindow"
         Width="800"
         Height="450"
@@ -27,6 +28,51 @@
                                Fill="Red" />
                 </StackPanel>
             </TabItem.Header>
+
+            <!--  ScrollViewer jest potrzebny, aby kontrolka ItemsControl mogła przewijać zawartość  -->
+            <ScrollViewer>
+                <!--  ItemsControl - podstawowa kontrolka do wyświetlania listy elementów, nie obsługuje interakcji z użytkownikiem  -->
+                <!--  ItemsSource - źródło danych, które będzie wyświetlane w kontrolce  -->
+                <!--  Binding - wiązanie danych, pozwala na powiązanie źródła danych z kontrolką  -->
+                <!--  Path=Products - ścieżka do właściwości w źródle danych, która będzie wyświetlana w kontrolce  -->
+                <!--  DataContext (ustawiony w code behind na okno  - this) - kontekst danych, pozwala na powiązanie źródła danych z kontrolką  -->
+                <ItemsControl ItemsSource="{Binding Products}">
+                    <!--  ItemTemplate - szablon elementu, który będzie wyświetlany w kontrolce  -->
+                    <ItemsControl.ItemTemplate>
+                        <!--  DataTemplate przełącza kontekst danych (DataContext) na elementy w szablonie  -->
+                        <!--  Path jest w domyślnym kontekście danych, czyli w kontekście elementu (nie trzeba do pisać jawnie)  -->
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,2*,.5*,*">
+                                <Label Grid.Column="0"
+                                       Content="{Binding Name}" />
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding Description}"
+                                           TextWrapping="Wrap" />
+                                <Label Grid.Column="2"
+                                       HorizontalContentAlignment="Right"
+                                       Content="{Binding Price}" />
+                                <Label Grid.Column="3"
+                                       HorizontalContentAlignment="Right"
+                                       Content="{Binding ExpirationDate}" />
+                            </Grid>
+                            <!--<StackPanel Orientation="Vertical">
+                                <Label  Content="{Binding Name}"/>
+                                <Label  Content="{Binding Price}" HorizontalContentAlignment="Right"/>
+                                <Label  Content="{Binding ExpirationDate}" HorizontalContentAlignment="Right"/>
+                            </StackPanel>-->
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <!--  ItemsPanel - panel, w którym będą wyświetlane elementy  -->
+                    <!--  jeśli nie zmodyfikujemy to domyślnie jest to StackPanel, ale możemy zmienić np. na UniformGrid  -->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                            <!--<WrapPanel />-->
+                            <!--<UniformGrid/>-->
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
 
         </TabItem>
         <TabItem Header="ListBox" />

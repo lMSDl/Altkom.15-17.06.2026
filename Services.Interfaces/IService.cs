@@ -2,6 +2,6 @@
 {
     public interface IService<T>
     {
-        IEnumerable<T> ReadALl();
+        IEnumerable<T> ReadAll();
     }
 }

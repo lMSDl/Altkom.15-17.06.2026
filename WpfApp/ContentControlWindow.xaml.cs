@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Models;
+using Services.Bogus;
+using Services.Bogus.Fakers;
+using Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +21,17 @@ namespace WpfApp
     /// </summary>
     public partial class ContentControlWindow : Window
     {
+        public IEnumerable<Product> Products { get; set; }
+        private IService<Product> _service;
+
         public ContentControlWindow()
         {
             InitializeComponent();
+            //ustawienie DataContext na this, aby można było bindować do właściwości Products
+            DataContext = this;
+
+            _service= new BogusService<Product>(new ProductFaker());
+            Products = _service.ReadAll();
         }
     }
 }
