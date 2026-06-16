@@ -13,7 +13,8 @@ namespace WpfApp
 
         public App()
         {
-
+            //wymuszenie kultury en-US dla całej aplikacji, aby daty i liczby były wyświetlane w formacie amerykańskim
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
         }
             
     }

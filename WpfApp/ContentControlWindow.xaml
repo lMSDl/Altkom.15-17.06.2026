@@ -5,6 +5,7 @@
         xmlns:local="clr-namespace:WpfApp"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:models="clr-namespace:Models;assembly=Models"
+        xmlns:properties="clr-namespace:WpfApp.Properties"
         Title="ContentControlWindow"
         Width="800"
         Height="450"
@@ -207,15 +208,15 @@
                         <!--  DataGridTextColumn - kolumna tekstowa, która będzie wyświetlana w kontrolce  -->
                         <!--  DataGridCheckBoxColumn - kolumna z polem wyboru, która będzie wyświetlana w kontrolce  -->
                         <DataGridCheckBoxColumn Binding="{Binding IsDamaged}"
-                                                Header="Uszkodzony" />
+                                                Header="{x:Static properties:Resources.Damaged}" />
                         <DataGridTextColumn Binding="{Binding Name}"
-                                            Header="Nazwa" />
+                                            Header="{x:Static properties:Resources.Name}" />
                         <DataGridTextColumn Binding="{Binding Description}"
-                                            Header="Opis" />
+                                            Header="{x:Static properties:Resources.Description}" />
                         <DataGridTextColumn Binding="{Binding Price}"
-                                            Header="Cena" />
+                                            Header="{x:Static properties:Resources.Price}" />
                         <DataGridTextColumn Binding="{Binding ExpirationDate}"
-                                            Header="Data przydatności" />
+                                            Header="{x:Static properties:Resources.ExpirationDate}" />
                     </DataGrid.Columns>
                 </DataGrid>
 
