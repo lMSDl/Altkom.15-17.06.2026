@@ -43,7 +43,7 @@
         <TabControl x:Name="MyTabControl"
                     BorderBrush="DarkBlue"
                     BorderThickness="3"
-                    SelectedIndex="0"
+                    SelectedIndex="{Binding SelectedTabIndex}"
                     TabStripPlacement="Left">
             <TabItem>
                 <TabItem.Header>
@@ -213,6 +213,7 @@
                           CanUserDeleteRows="True"
                           ItemsSource="{Binding Products}"
                           SelectedItem="{Binding SelectedProduct}"
+                          SelectedIndex="{Binding SelectedProductIndex}"
                           Sorting="DataGrid_Sorting">
 
                     <!--  DataGrid.Columns - kolumny, które będą wyświetlane w kontrolce  -->

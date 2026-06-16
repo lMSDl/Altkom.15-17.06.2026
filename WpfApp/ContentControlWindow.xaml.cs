@@ -39,6 +39,27 @@ namespace WpfApp
         //implementacja INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        //właściwość do przechowywania indeksu wybranego zakładki w ustawieniach aplikacji
+        public int SelectedTabIndex
+        {
+            get => Properties.Settings.Default.SelectedTabIndex;
+            set
+            {
+                Properties.Settings.Default.SelectedTabIndex = value;
+                //zapisanie ustawienia do pliku konfiguracyjnego aplikacji
+                Properties.Settings.Default.Save();
+            }
+        }
+        public int SelectedProductIndex
+        {
+            get => Properties.Settings.Default.SelectedProductIndex;
+            set
+            {
+                Properties.Settings.Default.SelectedProductIndex = value;
+                Properties.Settings.Default.Save();
+            }
+        }
+
         public ContentControlWindow()
         {
             InitializeComponent();
