@@ -1,5 +1,6 @@
 ﻿using Dices.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,7 +9,7 @@ namespace Dices
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public ObservableCollection<Dice> Dices { get; }
 
@@ -19,6 +20,10 @@ namespace Dices
             Dices = new ObservableCollection<Dice>(Enumerable.Range(1, 6).Select(i => new Dice { Value = i }));
             DataContext = this;
         }
+
+        public int Sum => Dices.Sum(x => x.Value);
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
@@ -46,7 +51,11 @@ namespace Dices
             /*await Task.WhenAll(rollTasks);
             RollButton.IsEnabled = true;*/
             
-            Task.WhenAll(rollTasks).ContinueWith(_ => Dispatcher.Invoke(() => RollButton.IsEnabled = true));
+            Task.WhenAll(rollTasks).ContinueWith(_ => Dispatcher.Invoke(() =>
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Sum)));
+                return RollButton.IsEnabled = true;
+            }));
         }
 
         private static async Task RollAsync(Random random, Dice dice)
