@@ -127,7 +127,53 @@
             </ListBox>
 
         </TabItem>
-        <TabItem Header="ListView" />
+        <TabItem Header="ListView">
+            <!--  ListView - kontrolka do wyświetlania listy elementów, obsługuje interakcję z użytkownikiem, posiada wbudowany mechanizm przewijania  -->
+            <!--  dodaje możliwość wyświetlania kolumn  -->
+            <ListView ItemsSource="{Binding Products}"
+                      SelectedItem="{Binding SelectedProduct}">
+
+                <!--  jeśli nie użjemy View, to ListView będzie wyświetlał elementy tak samo jak ListBox, czyli używając ItemTemplate  -->
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+
+
+                <!--  View - widok, który będzie wyświetlany w kontrolce  -->
+                <ListView.View>
+                    <!--  GridView - widok dla ListView, pozwala na wyświetlanie danych w formie tabeli  -->
+                    <GridView AllowsColumnReorder="False">
+
+                        <!--  GridViewColumnHeader - szablon nagłówka kolumny, który będzie wyświetlany w kontrolce  -->
+                        <GridView.ColumnHeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="{Binding}" />
+                                    <Rectangle Width="10"
+                                               Height="10"
+                                               Margin="5,0,0,0"
+                                               Fill="Red" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridView.ColumnHeaderTemplate>
+
+                        <!--  GridViewColumn - kolumna, która będzie wyświetlana w kontrolce  -->
+                        <!--  DisplayMemberBinding - wiązanie danych, pozwala na powiązanie źródła danych z kontrolką  -->
+                        <!--  Header - nagłówek kolumny, może być tekstem lub innym elementem  -->
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                        Header="Nazwa" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}"
+                                        Header="Opis" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Price}"
+                                        Header="Cena" />
+                        <GridViewColumn DisplayMemberBinding="{Binding ExpirationDate}"
+                                        Header="Data przydatności" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
         <TabItem Header="DataGrid" />
     </TabControl>
 </Window>
