@@ -11,6 +11,7 @@ namespace Services.Bogus.Fakers
             RuleFor(p => p.Price, f => f.Random.Float(1, 1000));
             RuleFor(p => p.Description, f => f.Commerce.ProductDescription());
             RuleFor(p => p.ExpirationDate, f => f.Date.Future());
+            RuleFor(p => p.IsDamaged, f => f.Random.Bool(0.1f)); // 10% szans na uszkodzony produkt
 
         }
     }

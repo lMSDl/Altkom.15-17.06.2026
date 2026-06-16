@@ -32,7 +32,7 @@ namespace WpfApp
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedProduct)));
             }
         }
-        public IEnumerable<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
         private IService<Product> _service;
         private Product selectedProduct;
 
@@ -46,7 +46,21 @@ namespace WpfApp
             DataContext = this;
 
             _service= new BogusService<Product>(new ProductFaker());
-            Products = _service.ReadAll();
+            Products = new List<Product>(_service.ReadAll());
+        }
+
+        private void DataGrid_Sorting(object sender, DataGridSortingEventArgs e)
+        {
+            var sortDescriptions = ((DataGrid)sender).Items.SortDescriptions;
+            //czyścimy wszystkie sortowania, aby sortować tylko po IsDamaged i wybranej kolumnie
+            sortDescriptions.Clear();
+
+            //wymuszamy sortowanie po IsDamaged w kolejności rosnącej, a następnie po wybranej kolumnie w kolejności malejącej
+            sortDescriptions.Add(new SortDescription(nameof(Product.IsDamaged), ListSortDirection.Ascending));
+            //dodajemy sortowanie po wybranej kolumnie w kolejności takiej jak wybrał użytkownik (jeśli kliknął w nagłówek kolumny, to sortowanie będzie w kolejności rosnącej, jeśli kliknął ponownie, to w kolejności malejącej)
+            sortDescriptions.Add(new SortDescription(e.Column.SortMemberPath, e.Column.SortDirection == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending));
+
+            e.Handled = true;
         }
     }
 }

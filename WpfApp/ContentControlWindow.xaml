@@ -174,6 +174,34 @@
                 </ListView.View>
             </ListView>
         </TabItem>
-        <TabItem Header="DataGrid" />
+        <TabItem Header="DataGrid">
+
+            <!--  DataGrid - kontrolka do wyświetlania tabeli z elementami, obsługuje interakcję z użytkownikiem, posiada wbudowany mechanizm przewijania i auto generacja kolumn  -->
+            <!--  AutoGenerateColumns - automatyczne generowanie kolumn na podstawie właściwości w źródle danych  -->
+            <DataGrid AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserDeleteRows="True"
+                      ItemsSource="{Binding Products}"
+                      SelectedItem="{Binding SelectedProduct}"
+                      Sorting="DataGrid_Sorting">
+
+                <!--  DataGrid.Columns - kolumny, które będą wyświetlane w kontrolce  -->
+                <DataGrid.Columns>
+                    <!--  DataGridTextColumn - kolumna tekstowa, która będzie wyświetlana w kontrolce  -->
+                    <!--  DataGridCheckBoxColumn - kolumna z polem wyboru, która będzie wyświetlana w kontrolce  -->
+                    <DataGridCheckBoxColumn Binding="{Binding IsDamaged}"
+                                            Header="Uszkodzony" />
+                    <DataGridTextColumn Binding="{Binding Name}"
+                                        Header="Nazwa" />
+                    <DataGridTextColumn Binding="{Binding Description}"
+                                        Header="Opis" />
+                    <DataGridTextColumn Binding="{Binding Price}"
+                                        Header="Cena" />
+                    <DataGridTextColumn Binding="{Binding ExpirationDate}"
+                                        Header="Data przydatności" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </TabItem>
     </TabControl>
 </Window>
