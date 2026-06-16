@@ -12,66 +12,13 @@
 
     <!--  Resources - zasoby, które będą dostępne w widoku i jego dzieciach  -->
     <Window.Resources>
-        <!--  Style - styl, który można zastosować do kontrolki  -->
-        <!--  TargetType - typ kontrolki, do której styl będzie zastosowany  -->
-        <Style TargetType="Label">
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="Foreground" Value="Blue" />
-        </Style>
-
-        <!--  x:Key - klucz, pod którym styl będzie dostępny, jeśli nie ma klucza to styl automatycznie zastosowany będzie do TargetType  -->
-        <!--  BasedOn - pozwala na dziedziczenie stylu z innego stylu  -->
-        <Style x:Key="RedBoldStyle"
-               BasedOn="{StaticResource RedItalicStyle}"
-               TargetType="Label">
-            <!--  Setter - ustawia właściwość kontrolki na określoną wartość  -->
-            <Setter Property="FontWeight" Value="Bold" />
-        </Style>
-
-        <Style x:Key="RedRectangleStyle"
-               TargetType="Rectangle">
-            <Setter Property="Fill" Value="Red" />
-            <Setter Property="Width" Value="10" />
-            <Setter Property="Height" Value="10" />
-            <Setter Property="Margin" Value="5,0,0,0" />
-        </Style>
-
-        <!--  DataType - typ danych, który będzie wyświetlany w kontrolce, pozwala na użycie szablonu tylko dla tego typu danych  -->
-        <DataTemplate x:Key="ProductTemplate"
-                      DataType="models:Product">
-            <Grid ColumnDefinitions="auto,*"
-                  RowDefinitions="auto,auto,auto,auto">
-                <Label Grid.Row="0"
-                       Grid.Column="0"
-                       Content="Nazwa:" />
-                <Label Grid.Row="0"
-                       Grid.Column="1"
-                       Content="{Binding Name}" />
-
-                <Label Grid.Row="1"
-                       Grid.Column="0"
-                       Content="Opis:" />
-                <TextBlock Grid.Row="1"
-                           Grid.Column="1"
-                           Text="{Binding Description}"
-                           TextWrapping="Wrap" />
-
-                <Label Grid.Row="2"
-                       Grid.Column="0"
-                       Content="Cena:" />
-                <Label Grid.Row="2"
-                       Grid.Column="1"
-                       Content="{Binding Price}" />
-
-                <Label Grid.Row="3"
-                       Grid.Column="0"
-                       Content="Data przydatności:" />
-                <Label Grid.Row="3"
-                       Grid.Column="1"
-                       Content="{Binding ExpirationDate}" />
-            </Grid>
-        </DataTemplate>
-
+        <ResourceDictionary>
+            <!--  MergedDictionaries - połączenie zasobów z różnych plików  -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ResourceDictionaries/StylesDictionary.xaml" />
+                <ResourceDictionary Source="/ResourceDictionaries/DataTemplatesDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <DockPanel>
