@@ -10,13 +10,41 @@
         Height="450"
         mc:Ignorable="d">
 
+    <!--  Resources - zasoby, które będą dostępne w widoku i jego dzieciach  -->
+    <Window.Resources>
+        <!--  Style - styl, który można zastosować do kontrolki  -->
+        <!--  TargetType - typ kontrolki, do której styl będzie zastosowany  -->
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="Blue" />
+        </Style>
+
+        <!--  x:Key - klucz, pod którym styl będzie dostępny, jeśli nie ma klucza to styl automatycznie zastosowany będzie do TargetType  -->
+        <!--  BasedOn - pozwala na dziedziczenie stylu z innego stylu  -->
+        <Style x:Key="RedBoldStyle"
+               BasedOn="{StaticResource RedItalicStyle}"
+               TargetType="Label">
+            <!--  Setter - ustawia właściwość kontrolki na określoną wartość  -->
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="RedRectangleStyle"
+               TargetType="Rectangle">
+            <Setter Property="Fill" Value="Red" />
+            <Setter Property="Width" Value="10" />
+            <Setter Property="Height" Value="10" />
+            <Setter Property="Margin" Value="5,0,0,0" />
+        </Style>
+
+    </Window.Resources>
+
     <DockPanel>
 
         <!--  ComboBox - kontrolka do wyboru elementu z listy  -->
-        <!-- Mode przy Binding określa sposób wiązania: -->
-        <!-- TwoWay - dwukierunkowe wiązanie, zmiany w kontrolce aktualizują źródło danych i odwrotnie -->
-        <!-- OneWay - jednokierunkowe wiązanie, zmiany w źródle danych aktualizują kontrolkę, ale nie odwrotnie -->
-        <!-- OneWayToSource - jednokierunkowe wiązanie, zmiany w kontrolce aktualizują źródło danych, ale nie odwrotnie -->
+        <!--  Mode przy Binding określa sposób wiązania:  -->
+        <!--  TwoWay - dwukierunkowe wiązanie, zmiany w kontrolce aktualizują źródło danych i odwrotnie  -->
+        <!--  OneWay - jednokierunkowe wiązanie, zmiany w źródle danych aktualizują kontrolkę, ale nie odwrotnie  -->
+        <!--  OneWayToSource - jednokierunkowe wiązanie, zmiany w kontrolce aktualizują źródło danych, ale nie odwrotnie  -->
         <ComboBox DockPanel.Dock="Top"
                   SelectedIndex="{Binding ElementName=MyTabControl, Path=SelectedIndex, Mode=TwoWay}">
             <!--  ComboBoxItem - element listy - jest to Content, więc może prezentować dowolny widok - w naszym przypadku to po prostu string  -->
@@ -46,16 +74,22 @@
                     SelectedIndex="{Binding SelectedTabIndex}"
                     TabStripPlacement="Left">
             <TabItem>
+
+                <!--  Style mogę być zdefiniowane lokalnie dla praktycznie dowolnego elementu i mają zastosowanie tylko w obrębie tego elementu (i jego dzieci)  -->
+                <!--<TabItem.Resources>
+                    <Style TargetType="Label" >
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="Foreground" Value="Blue"/>
+                    </Style>
+                </TabItem.Resources>-->
+
                 <TabItem.Header>
                     <StackPanel Margin="0"
                                 Orientation="Horizontal">
                         <Label Margin="0"
                                Padding="0"
                                Content="ItemsControl" />
-                        <Rectangle Width="10"
-                                   Height="10"
-                                   Margin="5,0,0,0"
-                                   Fill="Red" />
+                        <Rectangle Style="{StaticResource RedRectangleStyle}" />
                     </StackPanel>
                 </TabItem.Header>
 
@@ -78,12 +112,16 @@
                                     <TextBlock Grid.Column="1"
                                                Text="{Binding Description}"
                                                TextWrapping="Wrap" />
+                                    <!--  użycie stylu RedBoldStyle  -->
                                     <Label Grid.Column="2"
                                            HorizontalContentAlignment="Right"
-                                           Content="{Binding Price}" />
+                                           Content="{Binding Price}"
+                                           Style="{StaticResource RedBoldStyle}" />
+                                    <!--  użycie stylu RedItalicStyle  -->
                                     <Label Grid.Column="3"
                                            HorizontalContentAlignment="Right"
-                                           Content="{Binding ExpirationDate}" />
+                                           Content="{Binding ExpirationDate}"
+                                           Style="{StaticResource RedItalicStyle}" />
                                 </Grid>
                                 <!--<StackPanel Orientation="Vertical">
                                 <Label  Content="{Binding Name}"/>
@@ -181,10 +219,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="{Binding}" />
-                                        <Rectangle Width="10"
-                                                   Height="10"
-                                                   Margin="5,0,0,0"
-                                                   Fill="Red" />
+                                        <Rectangle Style="{StaticResource RedRectangleStyle}" />
                                     </StackPanel>
                                 </DataTemplate>
                             </GridView.ColumnHeaderTemplate>
@@ -212,8 +247,8 @@
                           CanUserAddRows="True"
                           CanUserDeleteRows="True"
                           ItemsSource="{Binding Products}"
-                          SelectedItem="{Binding SelectedProduct}"
                           SelectedIndex="{Binding SelectedProductIndex}"
+                          SelectedItem="{Binding SelectedProduct}"
                           Sorting="DataGrid_Sorting">
 
                     <!--  DataGrid.Columns - kolumny, które będą wyświetlane w kontrolce  -->

@@ -9,6 +9,26 @@
         Height="450"
         mc:Ignorable="d">
 
+    <Window.Resources>
+        <!--  Style dają nam możliwość zmiany wyglądu całej kontrolki  -->
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse Fill="Gray" />
+                            <!--  ContentPresenter pozwala na wyświetlenie zawartości kontrolki  -->
+                            <!--  RelativeSource FindAncestor pozwala na odwołanie się do właściwości kontrolki nadrzędnej, w tym wypadku Button  -->
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Content="{Binding Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <!--<Button Background="Blue" Content="Click me!" Foreground="White" />-->
     <!--<Button Background="Green" >
         <Button.Content>Click me!</Button.Content>
