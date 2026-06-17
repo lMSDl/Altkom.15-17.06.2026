@@ -1,4 +1,7 @@
-﻿namespace Models
+﻿using System.Collections;
+using System.ComponentModel;
+
+namespace Models
 {
     public class Product : ICloneable
     {
@@ -8,9 +11,15 @@
         public DateTime ExpirationDate { get; set; }
         public bool IsDamaged { get; set; }
 
+
         public object Clone()
         {
             return MemberwiseClone();
+        }
+
+        public IEnumerable GetErrors(string? propertyName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

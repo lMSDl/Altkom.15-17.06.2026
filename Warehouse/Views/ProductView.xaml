@@ -5,6 +5,7 @@
         xmlns:local="clr-namespace:Warehouse.Views"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:Warehouse.Properties"
+        xmlns:validators="clr-namespace:Warehouse.ValidationRules"
         Title="ProductView"
         Width="800"
         Height="450"
@@ -28,7 +29,27 @@
                      Text="{Binding Product.Description}"
                      TextWrapping="Wrap" />
             <Label Content="{x:Static properties:Resources.Price}" />
-            <TextBox Text="{Binding Product.Price}" />
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="Product.Price"
+                             UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validators:PriceValidation />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <Validation.ErrorTemplate>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <TextBlock HorizontalAlignment="Right"
+                                       Foreground="Red"
+                                       Text="{Binding [0].ErrorContent}" />
+                            <!--  AdornedElementPlaceholder jest elementem zastępczym, który jest używany do wyświetlania błędów walidacji.  -->
+                            <AdornedElementPlaceholder/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Validation.ErrorTemplate>
+            </TextBox>
             <Label Content="{x:Static properties:Resources.ExpirationDate}" />
             <DatePicker SelectedDate="{Binding Product.ExpirationDate}" />
             <CheckBox Content="{x:Static properties:Resources.Damaged}"

@@ -56,7 +56,7 @@ namespace Warehouse.ViewModels
         {
             var product = AddOrEdit(type, (Product)SelectedProduct.Clone());
 
-            if (!_service.Replace(SelectedProduct, product))
+            if (product == null || !_service.Replace(SelectedProduct, product))
             {
                 return;
             }
