@@ -18,5 +18,10 @@ namespace Services.Bogus
         {
             return[.. Entities];
         }
+
+        public bool Delete(T entity)
+        {
+            return Entities.Remove(entity);
+        }
     }
 }

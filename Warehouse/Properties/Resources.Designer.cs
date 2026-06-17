@@ -70,6 +70,15 @@ namespace Warehouse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description {
@@ -102,6 +111,15 @@ namespace Warehouse.Properties {
         public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you really want to delete product &quot;{0}&quot;?.
+        /// </summary>
+        public static string ProductDeleteConfirmation {
+            get {
+                return ResourceManager.GetString("ProductDeleteConfirmation", resourceCulture);
             }
         }
     }

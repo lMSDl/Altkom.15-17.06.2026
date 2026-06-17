@@ -120,6 +120,9 @@
   <data name="Damaged" xml:space="preserve">
     <value>Damaged</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -131,5 +134,8 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value> Price</value>
+  </data>
+  <data name="ProductDeleteConfirmation" xml:space="preserve">
+    <value>Are you really want to delete product "{0}"?</value>
   </data>
 </root>

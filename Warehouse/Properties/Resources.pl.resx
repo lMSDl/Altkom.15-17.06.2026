@@ -120,6 +120,9 @@
   <data name="Damaged" xml:space="preserve">
     <value>Uszkodzony</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Opis</value>
   </data>
@@ -131,5 +134,8 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value>Cena</value>
+  </data>
+  <data name="ProductDeleteConfirmation" xml:space="preserve">
+    <value>Czy jesteś pewny, że chcesz usunąć produkt "{0}"?</value>
   </data>
 </root>

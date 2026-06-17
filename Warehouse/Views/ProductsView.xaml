@@ -24,24 +24,31 @@
     </behaviors:Interaction.Triggers>
 
     <Grid>
-        <DataGrid AutoGenerateColumns="False"
-                  IsEnabled="{Binding IsLoading, Converter={convertersToolkit:BoolNegationConverter}}"
-                  ItemsSource="{Binding Products}"
-                  SelectedItem="{Binding SelectedProduct}">
+        <DockPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                <Button Command="{Binding RemoveCommand}"
+                        Content="{x:Static properties:Resources.Delete}" />
+            </StackPanel>
 
-            <DataGrid.Columns>
-                <DataGridCheckBoxColumn Binding="{Binding IsDamaged}"
-                                        Header="{x:Static properties:Resources.Damaged}" />
-                <DataGridTextColumn Binding="{Binding Name}"
-                                    Header="{x:Static properties:Resources.Name}" />
-                <DataGridTextColumn Binding="{Binding Description}"
-                                    Header="{x:Static properties:Resources.Description}" />
-                <DataGridTextColumn Binding="{Binding Price}"
-                                    Header="{x:Static properties:Resources.Price}" />
-                <DataGridTextColumn Binding="{Binding ExpirationDate}"
-                                    Header="{x:Static properties:Resources.ExpirationDate}" />
-            </DataGrid.Columns>
-        </DataGrid>
+            <DataGrid AutoGenerateColumns="False"
+                      IsEnabled="{Binding IsLoading, Converter={convertersToolkit:BoolNegationConverter}}"
+                      ItemsSource="{Binding Products}"
+                      SelectedItem="{Binding SelectedProduct}">
+
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Binding="{Binding IsDamaged}"
+                                            Header="{x:Static properties:Resources.Damaged}" />
+                    <DataGridTextColumn Binding="{Binding Name}"
+                                        Header="{x:Static properties:Resources.Name}" />
+                    <DataGridTextColumn Binding="{Binding Description}"
+                                        Header="{x:Static properties:Resources.Description}" />
+                    <DataGridTextColumn Binding="{Binding Price}"
+                                        Header="{x:Static properties:Resources.Price}" />
+                    <DataGridTextColumn Binding="{Binding ExpirationDate}"
+                                        Header="{x:Static properties:Resources.ExpirationDate}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
 
         <ProgressBar Foreground="Gray"
                      IsIndeterminate="True"
