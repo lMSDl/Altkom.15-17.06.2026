@@ -1,17 +1,30 @@
 ﻿<Window x:Class="Dices.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:controls="clr-namespace:Dices.Controls"
         xmlns:converters="clr-namespace:Dices.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Dices"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:Dices.Properties"
+        xmlns:vm="clr-namespace:Dices.ViewModels"
         Title="MainWindow"
+        x:Name="root"
         Width="800"
         Height="450"
         mc:Ignorable="d">
 
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <behaviors:Interaction.Triggers>
+        <behaviors:EventTrigger EventName="Loaded">
+            <behaviors:InvokeCommandAction Command="{Binding OnLoadedCommand}" />
+        </behaviors:EventTrigger>
+    </behaviors:Interaction.Triggers>
+    
     <!--<Window.Resources>
         <ResourceDictionary>
             <converters:DiceValueToImageSourceConverter x:Key="DiceValueToImageSourceConverter" />
@@ -19,17 +32,17 @@
     </Window.Resources>-->
     <DockPanel>
         <Button Width="32"
-                Click="Button_Remove"
+                Command="{Binding RemoveCommand}"
                 Content="-"
                 DockPanel.Dock="Left"
                 FontSize="32" />
         <Button Width="32"
-                Click="Button_Add"
+                Command="{Binding AddCommand}"
                 Content="+"
                 DockPanel.Dock="Right"
                 FontSize="32" />
         <Button x:Name="RollButton"
-                Click="Button_Roll"
+                Command="{Binding RollCommand}"
                 Content="{x:Static properties:Resources.Roll}"
                 DockPanel.Dock="Bottom"
                 FontSize="32" />
@@ -49,18 +62,18 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <!--<Button Background="Transparent"
-                            Click="Dice_Click">
-                    -->
-                    <!--<controls:DiceControl />-->
-                    <!--<Image Source="{Binding Value, Converter={StaticResource DiceValueToImageSourceConverter}}" />-->
-                    <!--
-                        <Image Source="{Binding Value, Converter={converters:DiceValueToImageSourceConverter}}"/>
-                    </Button>-->
-                    <controls:DiceButtonControl Background="Transparent"
+                    <Button Background="Transparent"
+                            Command="{Binding ElementName=root, Path=DataContext.DiceClickCommand}"
+                            CommandParameter="{Binding}">
+
+                        <controls:DiceControl />
+                        <!--<Image Source="{Binding Value, Converter={StaticResource DiceValueToImageSourceConverter}}"
+                        <Image Source="{Binding Value, Converter={converters:DiceValueToImageSourceConverter}}"/>-->
+                    </Button>
+                    <!--<controls:DiceButtonControl Background="Transparent"
                                                 Click="Dice_Click"
                                                 IsBlocked="{Binding IsLocked}"
-                                                Number="{Binding Value}" />
+                                                Number="{Binding Value}" />-->
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
