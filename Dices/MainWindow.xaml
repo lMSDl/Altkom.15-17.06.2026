@@ -51,13 +51,16 @@
                 <DataTemplate>
                     <!--<Button Background="Transparent"
                             Click="Dice_Click">
-                        --><!--<controls:DiceControl />-->
-                        <!--<Image Source="{Binding Value, Converter={StaticResource DiceValueToImageSourceConverter}}" />--><!--
+                    -->
+                    <!--<controls:DiceControl />-->
+                    <!--<Image Source="{Binding Value, Converter={StaticResource DiceValueToImageSourceConverter}}" />-->
+                    <!--
                         <Image Source="{Binding Value, Converter={converters:DiceValueToImageSourceConverter}}"/>
                     </Button>-->
-                    <controls:DiceButtonControl Background="Transparent" Click="Dice_Click"
+                    <controls:DiceButtonControl Background="Transparent"
+                                                Click="Dice_Click"
                                                 IsBlocked="{Binding IsLocked}"
-                                                Number="{Binding Value}"/>
+                                                Number="{Binding Value}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

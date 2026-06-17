@@ -1,0 +1,29 @@
+﻿<Window x:Class="ArchitecturalPatterns.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:ArchitecturalPatterns"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <DockPanel>
+
+        <StackPanel DockPanel.Dock="Left">
+            <ToggleButton x:Name="ToggleButton_MVC"
+                          Click="ToggleButton_MVC_Click"
+                          Content="MVC" />
+            <ToggleButton x:Name="ToggleButton_MVP"
+                          Click="ToggleButton_MVP_Click"
+                          Content="MVP" />
+            <ToggleButton x:Name="ToggleButton_MVVM"
+                          Click="ToggleButton_MVVM_Click"
+                          Content="MVVM" />
+        </StackPanel>
+
+        <Frame x:Name="MainFrame"
+               NavigationUIVisibility="Hidden" />
+
+    </DockPanel>
+</Window>

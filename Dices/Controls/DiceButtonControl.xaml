@@ -5,41 +5,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Dices.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="root"
         d:DesignHeight="450"
         d:DesignWidth="800"
-        mc:Ignorable="d"
-        x:Name="root">
+        mc:Ignorable="d">
     <Image>
         <Image.Style>
             <Style TargetType="Image">
                 <Setter Property="Source" Value="/Images/kostkapusta.png" />
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding Number, ElementName=root}"
-                             Value="1">
+                                 Value="1">
                         <Setter Property="Source" Value="/Images/kostka1.png" />
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Number, ElementName=root}"
-                             Value="2">
+                                 Value="2">
                         <Setter Property="Source" Value="/Images/kostka2.png" />
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Number, ElementName=root}"
-                             Value="3">
+                                 Value="3">
                         <Setter Property="Source" Value="/Images/kostka3.png" />
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Number, ElementName=root}"
-                             Value="4">
+                                 Value="4">
                         <Setter Property="Source" Value="/Images/kostka4.png" />
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Number, ElementName=root}"
-                             Value="5">
+                                 Value="5">
                         <Setter Property="Source" Value="/Images/kostka5.png" />
                     </DataTrigger>
                     <DataTrigger Binding="{Binding Number, ElementName=root}"
-                             Value="6">
+                                 Value="6">
                         <Setter Property="Source" Value="/Images/kostka6.png" />
                     </DataTrigger>
                     <DataTrigger Binding="{Binding IsBlocked, ElementName=root}"
-                             Value="True">
+                                 Value="True">
                         <Setter Property="Opacity" Value="0.5" />
                     </DataTrigger>
                 </Style.Triggers>
