@@ -21,12 +21,13 @@ namespace ArchitecturalPatterns.ViewModels
             }
         }
 
-        public SomeModel Model { get; set; } = new SomeModel() { Value = "ala ma kota" };
+        public SomeModel? Model { get; set; }
 
         //ICommand to interfejs, który reprezentuje polecenie w architekturze MVVM. XAML używa bindingu do powiązania poleceń z akcjami w ViewModelu.
         //W tym przypadku SaveCommand i LoadCommand są właściwościami typu ICommand, które są powiązane z akcjami zapisu i odczytu danych w modelu.
         public ICommand SaveCommand { get; }
         public ICommand LoadCommand { get; }
+        public ICommand OnPageLoadedCommand { get; }
 
         public ViewModel()
         {
@@ -49,7 +50,17 @@ namespace ArchitecturalPatterns.ViewModels
             SaveCommand = new Commands.RelayCommand(_ =>
                 Model.Value = InputValue, _ => !string.IsNullOrEmpty(InputValue));
             LoadCommand = new Commands.RelayCommand(_ =>
-                InputValue = Model.Value, _ => InputValue != Model.Value);
+                InputValue = Model!.Value, _ => InputValue != Model?.Value);
+
+            OnPageLoadedCommand = new Commands.RelayCommand(async _ => await LoadModelAsync());
+        }
+
+
+        private Task LoadModelAsync()
+        {
+            Model = new SomeModel() { Value = "ala ma kota"};
+            OnPropertyChanged(nameof(Model));
+            return Task.CompletedTask;
         }
     }
 }
