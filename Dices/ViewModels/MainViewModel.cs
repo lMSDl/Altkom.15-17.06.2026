@@ -18,7 +18,7 @@ namespace Dices.ViewModels
         {
             AddCommand = new Commands.RelayCommand(AddDice);
             RemoveCommand = new Commands.RelayCommand(RemoveDice, () => Dices?.Count > 0);
-            RollCommand = new Commands.RelayCommand(async () => await Roll(), () => Dices?.Any(x => !x.IsLocked) ?? false );
+            RollCommand = new Commands.RelayAsyncCommand(Roll, () => Dices?.Any(x => !x.IsLocked) ?? false );
 
             DiceClickCommand = new Commands.RelayGenericCommand<Dice>(dice => DiceLock(dice));
         }

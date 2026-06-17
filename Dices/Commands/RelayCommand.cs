@@ -2,7 +2,7 @@
 
 namespace Dices.Commands
 {
-    internal class RelayCommand : ICommand
+    internal class RelayCommand : BaseCommand
     {
         private readonly Action _execute;
         private readonly Func<bool> _canExecute;
@@ -16,18 +16,12 @@ namespace Dices.Commands
             _canExecute = canExecute;
         }
 
-        public event EventHandler? CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
-
-        public bool CanExecute(object? parameter)
+        public override bool CanExecute(object? parameter)
         {
             return _canExecute();
         }
 
-        public void Execute(object? parameter)
+        public override void Execute(object? parameter)
         {
             _execute();
         }
