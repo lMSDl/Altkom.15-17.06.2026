@@ -5,11 +5,13 @@ namespace Toolkit.MVVM.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        private bool isLoading;
+
         public ICommand OnLoadedCommand { get; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -17,8 +19,23 @@ namespace Toolkit.MVVM.ViewModels
         public BaseViewModel()
         {
 
-            OnLoadedCommand = new Commands.RelayCommand(async () => await OnLoaded());
+            OnLoadedCommand = new Commands.RelayCommand(async () =>
+            {
+                IsLoading = true;
+                try { await OnLoaded(); }
+                finally { IsLoading = false; }
+            });
 
+        }
+
+        public bool IsLoading
+        {
+            get => isLoading;
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
         }
 
         protected virtual Task OnLoaded()

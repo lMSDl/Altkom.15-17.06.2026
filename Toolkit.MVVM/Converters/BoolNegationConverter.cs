@@ -2,11 +2,15 @@
 
 namespace Toolkit.MVVM.Converters
 {
-    public class TestConverter : BaseConverter
+    public class BoolNegationConverter : BaseConverter
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
+            if (value is bool b)
+            {
+                return !b;
+            }
+            return false;
         }
     }
 }

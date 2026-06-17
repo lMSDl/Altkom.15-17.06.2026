@@ -7,5 +7,6 @@
   <Project Path="Services.Bogus/Services.Bogus.csproj" Id="7fdf1af9-ba33-46b9-b2f8-ec2ca5d26a8f" />
   <Project Path="Services.Interfaces/Services.Interfaces.csproj" Id="dd1e784d-56f6-476b-b6d4-d7c7bbbcabec" />
   <Project Path="Toolkit.MVVM/Toolkit.MVVM.csproj" Id="e165109a-d6e5-489f-9b87-c00a2a7390cc" />
+  <Project Path="Warehouse/Warehouse.csproj" Id="dac6f9c3-1a58-4086-93cb-733408797da7" />
   <Project Path="WpfApp/WpfApp.csproj" />
 </Solution>
