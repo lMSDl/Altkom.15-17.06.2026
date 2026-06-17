@@ -25,13 +25,21 @@
 
     <Grid>
         <DockPanel>
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <UniformGrid DockPanel.Dock="Bottom"
+                         Rows="1">
+                <Button Command="{Binding AddCommand}"
+                        Content="{x:Static properties:Resources.Add}"
+                        CommandParameter="{x:Type local:ProductView}" />
+                <Button Command="{Binding EditCommand}"
+                        Content="{x:Static properties:Resources.Edit}"
+                        CommandParameter="{x:Type local:ProductView}" />
                 <Button Command="{Binding RemoveCommand}"
                         Content="{x:Static properties:Resources.Delete}" />
-            </StackPanel>
+            </UniformGrid>
 
             <DataGrid AutoGenerateColumns="False"
                       IsEnabled="{Binding IsLoading, Converter={convertersToolkit:BoolNegationConverter}}"
+                      IsReadOnly="True"
                       ItemsSource="{Binding Products}"
                       SelectedItem="{Binding SelectedProduct}">
 

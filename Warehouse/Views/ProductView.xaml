@@ -1,0 +1,39 @@
+﻿<Window x:Class="Warehouse.Views.ProductView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Warehouse.Views"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:Warehouse.Properties"
+        Title="ProductView"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <DockPanel>
+
+        <UniformGrid DockPanel.Dock="Bottom">
+            <Button Command="{Binding SaveCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                    Content="{x:Static properties:Resources.Save}" />
+            <!--  Button IsCancel - automatycznie zamyka okno po naciśnięciu  -->
+            <Button Content="{x:Static properties:Resources.Cancel}"
+                    IsCancel="True" />
+        </UniformGrid>
+
+        <StackPanel>
+            <Label Content="{x:Static properties:Resources.Name}" />
+            <TextBox Text="{Binding Product.Name}" />
+            <Label Content="{x:Static properties:Resources.Description}" />
+            <TextBox AcceptsReturn="True"
+                     Text="{Binding Product.Description}"
+                     TextWrapping="Wrap" />
+            <Label Content="{x:Static properties:Resources.Price}" />
+            <TextBox Text="{Binding Product.Price}" />
+            <Label Content="{x:Static properties:Resources.ExpirationDate}" />
+            <DatePicker SelectedDate="{Binding Product.ExpirationDate}" />
+            <CheckBox Content="{x:Static properties:Resources.Damaged}"
+                      IsChecked="{Binding Product.IsDamaged}" />
+        </StackPanel>
+
+    </DockPanel>
+</Window>

@@ -23,5 +23,20 @@ namespace Services.Bogus
         {
             return Entities.Remove(entity);
         }
+
+        public void Add(T entity)
+        {
+            Entities.Add(entity);
+        }
+
+        public bool Replace(T oldEntity, T newEntity)
+        {
+            if (Entities.Remove(oldEntity))
+            {
+                Entities.Add(newEntity);
+                return true;
+            }
+            return false;
+        }
     }
 }
