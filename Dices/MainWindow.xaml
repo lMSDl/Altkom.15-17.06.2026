@@ -8,9 +8,10 @@
         xmlns:local="clr-namespace:Dices"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:Dices.Properties"
+        xmlns:toolkitConverters="clr-namespace:Toolkit.MVVM.Converters;assembly=Toolkit.MVVM"
         xmlns:vm="clr-namespace:Dices.ViewModels"
-        Title="MainWindow"
         x:Name="root"
+        Title="MainWindow"
         Width="800"
         Height="450"
         mc:Ignorable="d">
@@ -24,7 +25,7 @@
             <behaviors:InvokeCommandAction Command="{Binding OnLoadedCommand}" />
         </behaviors:EventTrigger>
     </behaviors:Interaction.Triggers>
-    
+
     <!--<Window.Resources>
         <ResourceDictionary>
             <converters:DiceValueToImageSourceConverter x:Key="DiceValueToImageSourceConverter" />

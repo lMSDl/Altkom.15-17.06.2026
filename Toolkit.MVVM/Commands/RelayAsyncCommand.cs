@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Dices.Commands
+namespace Toolkit.MVVM.Commands
 {
-    internal class RelayAsyncCommand : BaseCommand
+    public class RelayAsyncCommand : BaseCommand
     {
         private readonly Func<Task> _execute;
         private readonly Func<bool> _canExecute;
@@ -30,6 +28,7 @@ namespace Dices.Commands
             _execute().ContinueWith(t =>
             {
                 _isWorking = false;
+                Application.Current.Dispatcher.Invoke(CommandManager.InvalidateRequerySuggested);
             });
         }
     }

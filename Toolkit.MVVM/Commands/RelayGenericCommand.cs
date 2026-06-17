@@ -1,11 +1,9 @@
-﻿using System.Windows.Input;
-
-namespace Dices.Commands
+﻿namespace Toolkit.MVVM.Commands
 {
-    internal class RelayGenericCommand<T> : BaseCommand
+    public class RelayGenericCommand<T> : BaseCommand
     {
         private readonly Action<T> _execute;
-        private readonly Func<T,bool> _canExecute;
+        private readonly Func<T, bool> _canExecute;
 
         public RelayGenericCommand(Action<T> execute) : this(execute, (_) => true)
         {

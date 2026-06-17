@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 
-namespace Dices.Commands
+namespace Toolkit.MVVM.Commands
 {
-    internal abstract class BaseCommand : ICommand
+    public abstract class BaseCommand : ICommand
     {
 
         public event EventHandler? CanExecuteChanged

@@ -1,6 +1,8 @@
 ﻿using Dices.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Toolkit.MVVM.ViewModels;
+using Toolkit.MVVM.Commands;
 
 namespace Dices.ViewModels
 {
@@ -16,11 +18,11 @@ namespace Dices.ViewModels
 
         public MainViewModel()  
         {
-            AddCommand = new Commands.RelayCommand(AddDice);
-            RemoveCommand = new Commands.RelayCommand(RemoveDice, () => Dices?.Count > 0);
-            RollCommand = new Commands.RelayAsyncCommand(Roll, () => Dices?.Any(x => !x.IsLocked) ?? false );
+            AddCommand = new RelayCommand(AddDice);
+            RemoveCommand = new RelayCommand(RemoveDice, () => Dices?.Count > 0);
+            RollCommand = new RelayAsyncCommand(Roll, () => Dices?.Any(x => !x.IsLocked) ?? false );
 
-            DiceClickCommand = new Commands.RelayGenericCommand<Dice>(dice => DiceLock(dice));
+            DiceClickCommand = new RelayGenericCommand<Dice>(dice => DiceLock(dice));
         }
 
         protected override Task OnLoaded()

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 
-namespace Dices.ViewModels
+namespace Toolkit.MVVM.ViewModels
 {
-    internal class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public ICommand OnLoadedCommand { get; }
 

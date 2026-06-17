@@ -2,9 +2,9 @@
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace Dices.Converters
+namespace Toolkit.MVVM.Converters
 {
-    internal class TestConverter : MarkupExtension, IValueConverter
+    public class TestConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

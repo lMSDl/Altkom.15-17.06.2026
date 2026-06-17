@@ -6,5 +6,6 @@
   <Project Path="OrdersApp/OrdersApp.csproj" Id="8904ffa0-9927-45b2-a76b-cb8c88619df9" />
   <Project Path="Services.Bogus/Services.Bogus.csproj" Id="7fdf1af9-ba33-46b9-b2f8-ec2ca5d26a8f" />
   <Project Path="Services.Interfaces/Services.Interfaces.csproj" Id="dd1e784d-56f6-476b-b6d4-d7c7bbbcabec" />
+  <Project Path="Toolkit.MVVM/Toolkit.MVVM.csproj" Id="e165109a-d6e5-489f-9b87-c00a2a7390cc" />
   <Project Path="WpfApp/WpfApp.csproj" />
 </Solution>
