@@ -1,7 +1,17 @@
 ﻿namespace ArchitecturalPatterns.Models
 {
-    internal class SomeModel
+    internal class SomeModel : NotifyPropertyChanged
     {
-        public string Value { get; set; } = string.Empty;
+        private string _value = string.Empty;
+
+        public string Value
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

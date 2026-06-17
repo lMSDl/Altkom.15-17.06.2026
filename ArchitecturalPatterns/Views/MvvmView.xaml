@@ -15,9 +15,9 @@
     </Page.DataContext>
 
     <StackPanel>
-        <TextBox Text="{Binding InputValue}" />
+        <TextBox Text="{Binding InputValue, UpdateSourceTrigger=PropertyChanged}" />
         <Label Content="{Binding Model.Value}" />
-        <Button Content="Save" />
-        <Button Content="Load" />
+        <Button Content="Save" Command="{Binding SaveCommand}" />
+        <Button Content="Load" Command="{Binding LoadCommand}" />
     </StackPanel>
 </Page>
